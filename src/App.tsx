@@ -1,20 +1,41 @@
+// import { useState } from 'react';
 import { Grid } from '@mui/material';
+import HeaderUI from './components/HeaderUI';
+import SelectorUI from './components/SelectorUI';
+import AlertUI from './components/AlertUI';
+// import type { LocationData } from './types/weather';
 
 
 function App() {
 
+
   return (
     <>
-      <Grid container spacing={5} justifyContent="center" alignItems="center">
+      <Grid container
+        spacing={5}
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          maxWidth: { xs: '100%', md: '1300px' },
+          margin: '0 auto',
+        }}
+      >
 
         {/* Encabezado */}
-        <Grid size={{ xs: 12, md: 12 }}>IMG h1 Dashboard del clima p Datos meteorologicos Ubicación y tal</Grid>
+        <Grid size={{ xs: 12, md: 12 }}>
+          <HeaderUI/>
+        </Grid>
 
         {/* Selección */}
-        <Grid size={{ xs: 12, md: 3 }}>h2 Selección Ubicación form Buscar Mi ubicación NONE Ubicación</Grid>
+        <Grid size={{ xs: 12, md: 3 }}>
+          <SelectorUI
+          />
+        </Grid>
 
         {/* Alertas */}
-        <Grid size={{ xs: 12, md: 9 }}>NONE h2 alertas meteorológicas lista de alertas</Grid>
+        <Grid size={{ xs: 12, md: 9 }}>
+          <AlertUI/>
+        </Grid>
 
         {/* Resumen */}
         <Grid size={{ xs: 12, md: 8 }}> 
