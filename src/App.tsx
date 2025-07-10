@@ -27,15 +27,17 @@ function App() {
         </Grid>
 
         {/* Selección */}
-        <Grid size={{ xs: 12, md: 3 }}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <SelectorUI
           />
         </Grid>
 
         {/* Alertas */}
-        <Grid size={{ xs: 12, md: 9 }}>
+        <Grid size={{ xs: 12, md: 8 }}>
           <AlertUI/>
         </Grid>
+
+
 
         {/* Resumen */}
         <Grid size={{ xs: 12, md: 8 }}> 
@@ -58,8 +60,11 @@ function App() {
 
         {/* Gráfico */}
         <Grid size={{ xs: 12, md: 6 }}>Elemento: Gráfico</Grid>
+        
+        {/* Pronóstico 7 días */}
+        <Grid size={{ xs: 12, md: 6 }}>Elemento: Gráfico</Grid>
 
-        {/* Tabla */}
+        {/* Tabla de info detallada */}
         <Grid>Elemento: Tabla</Grid>
 
         

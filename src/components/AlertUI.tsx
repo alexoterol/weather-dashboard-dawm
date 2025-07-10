@@ -23,7 +23,7 @@ const AlertBox = ({
 
 const WeatherAlerts = ({
   uvIndex = 0,
-  windSpeed = 0,
+  windSpeed = 41,
   precipitation = 0,
 }: WeatherAlertsProps) => {
   const alerts = [];
