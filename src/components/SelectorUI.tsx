@@ -4,7 +4,12 @@ import MenuItem from '@mui/material/MenuItem';
 import { weatherApi } from '../services/weatherApi';
 import type { LocationData } from '../types/weather';
 
-const SelectorUI = () => {
+interface SelectorUIProps {
+  onLocationSelected: (location: LocationData) => void;
+}
+
+
+const SelectorUI = ({ onLocationSelected }: SelectorUIProps) => {
   const [cities, setCities] = useState<LocationData[]>([]);
   const [selectedCity, setSelectedCity] = useState('');
   const [search, setSearch] = useState('');
@@ -28,7 +33,9 @@ const SelectorUI = () => {
     setSelectedCity(city.name);
     setSearch(city.name);
     setShowDropdown(false);
+    onLocationSelected(city); // notifica al componente padre
   };
+
 
   const getCurrentLocation = () => {
     if (navigator.geolocation) {

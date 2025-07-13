@@ -1,77 +1,79 @@
-import { AlertTriangle, Sun } from 'lucide-react';
+import { Alert, AlertTitle, Skeleton } from '@mui/material';
+import type { WeatherData, LocationData } from '../types/weather';
+import { getWeatherInfo } from '../utils/weatherCodes';
 
-interface WeatherAlertsProps {
-  uvIndex?: number;
-  windSpeed?: number;
-  precipitation?: number;
+interface AlertUIProps {
+  weather: WeatherData | null;
+  location: LocationData | null;
+  isLoading: boolean;
 }
 
-const AlertBox = ({
-  icon,
-  message,
-  color,
-}: {
-  icon: React.ReactNode;
-  message: string;
-  color: string;
-}) => (
-  <div className={`flex items-center space-x-2 border-l-4 p-4 rounded-md mb-2 ${color} animate-slide-in`}>
-    {icon}
-    <span className="font-medium">{message}</span>
-  </div>
-);
+export default function AlertUI({ weather, location, isLoading }: AlertUIProps) {
+  if (isLoading) {
+    return (
+      <div className="space-y-2">
+        <Skeleton variant="rectangular" height={80} />
+        <Skeleton variant="rectangular" height={80} />
+      </div>
+    );
+  }
 
-const WeatherAlerts = ({
-  uvIndex = 0,
-  windSpeed = 41,
-  precipitation = 0,
-}: WeatherAlertsProps) => {
+  if (!weather || !location) return null;
+
+  const { current } = weather;
+  const weatherInfo = getWeatherInfo(current.weather_code);
+
   const alerts = [];
 
-  // Alerta de índice UV alto
-  if (uvIndex > 6) {
+  if (current.temperature_2m >= 35) {
     alerts.push({
-      icon: <Sun className="h-4 w-4" />,
-      message: `Índice UV alto (${uvIndex}). Se recomienda usar protección solar.`,
-      color: 'border-weather-saffron bg-weather-saffron/10',
+      title: "Ola de calor",
+      message: "Temperaturas extremadamente altas. Evita el sol directo y mantente hidratado.",
+      severity: "warning"
     });
   }
 
-  // Alerta de vientos fuertes
-  if (windSpeed > 40) {
+  if (current.wind_speed_10m >= 50) {
     alerts.push({
-      icon: <AlertTriangle className="h-4 w-4" />,
-      message: `Vientos fuertes detectados (${windSpeed} km/h). Precaución al aire libre.`,
-      color: 'border-weather-red bg-weather-red/10',
+      title: "Vientos fuertes",
+      message: "Ráfagas intensas. Cuidado con objetos sueltos y evita zonas peligrosas.",
+      severity: "info"
     });
   }
 
-  // Alerta de precipitación intensa
-  if (precipitation > 10) {
+  if (current.precipitation > 10) {
     alerts.push({
-      icon: <AlertTriangle className="h-4 w-4" />,
-      message: `Precipitación intensa (${precipitation} mm). Conduzca con precaución.`,
-      color: 'border-weather-blue bg-weather-blue/10',
+      title: "Lluvia intensa",
+      message: "Precipitación significativa. Precaución al conducir o caminar.",
+      severity: "info"
+    });
+  }
+
+  if (weatherInfo.description.toLowerCase().includes("tormenta")) {
+    alerts.push({
+      title: "Tormenta eléctrica",
+      message: "Riesgo de rayos. Permanece en interiores.",
+      severity: "error"
     });
   }
 
   if (alerts.length === 0) {
-    return null;
+    return (
+      <Alert severity="success">
+        <AlertTitle>Clima estable</AlertTitle>
+        No hay alertas activas en <strong>{location.name}</strong>.
+      </Alert>
+    );
   }
 
   return (
-    <div className="space-y-3 animate-fade-in">
-      <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3">Alertas Meteorológicas</h3>
-      {alerts.map((alert, index) => (
-        <AlertBox
-          key={index}
-          icon={alert.icon}
-          message={alert.message}
-          color={alert.color}
-        />
+    <div className="space-y-4">
+      {alerts.map((alert, idx) => (
+        <Alert key={idx} severity={alert.severity as "error" | "info" | "success" | "warning"}>
+          <AlertTitle>{alert.title}</AlertTitle>
+          {alert.message}
+        </Alert>
       ))}
     </div>
   );
-};
-
-export default WeatherAlerts;
+}
