@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import IndicatorUI from './IndicatorUI';
 import type { CurrentWeather, DailyWeather } from '../types/weather';
-import { getWeatherInfo } from '../utils/weatherCodes'; // ruta correcta según tu proyecto
+// import { getWeatherInfo } from '../utils/weatherCodes'; // ruta correcta según tu proyecto
 
 interface Props {
   current: CurrentWeather;
@@ -18,7 +18,7 @@ interface Props {
 }
 
 export default function IndicatorsPanel({ current, daily }: Props) {
-  const weatherInfo = getWeatherInfo(current.weather_code);
+//   const weatherInfo = getWeatherInfo(current.weather_code);
 
   const formatTime = (timeString: string) =>
     new Date(timeString).toLocaleTimeString('es-ES', {

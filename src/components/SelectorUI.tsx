@@ -11,7 +11,7 @@ interface SelectorUIProps {
 
 const SelectorUI = ({ onLocationSelected }: SelectorUIProps) => {
   const [cities, setCities] = useState<LocationData[]>([]);
-  const [selectedCity, setSelectedCity] = useState('');
+  const [, setSelectedCity] = useState('');
   const [search, setSearch] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -58,7 +58,7 @@ const SelectorUI = ({ onLocationSelected }: SelectorUIProps) => {
           }
         },
         (error) => {
-          alert('No se pudo obtener tu ubicación.');
+          alert('No se pudo obtener tu ubicación.' + error.message);
         }
       );
     }

@@ -5,23 +5,22 @@ import type { WeatherData, WeatherCodeInfo, LocationData } from "../types/weathe
 import { Grid } from '@mui/material';
 import SummaryExtra from "./SumaryExtra";
 
-import { buildForecastDays } from '../utils/forecast';
 
 type MainProps = {
   weatherData: WeatherData;
   weatherInfo: WeatherCodeInfo;
   locationData: LocationData;
 };
+// LocationData is not used in this component, but it can be useful for future features or debugging.
+export default function Main({ weatherData, weatherInfo }: MainProps) {
+//   const formattedLocation = locationData
+//     ? `${locationData.name}, ${locationData.country}`
+//     : "Ubicación no disponible";
 
-export default function Main({ weatherData, weatherInfo, locationData }: MainProps) {
-  const formattedLocation = locationData
-    ? `${locationData.name}, ${locationData.country}`
-    : "Ubicación no disponible";
-
-  const formattedUpdate = new Date(weatherData.current.time).toLocaleString("es-ES", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
+//   const formattedUpdate = new Date(weatherData.current.time).toLocaleString("es-ES", {
+//     dateStyle: "medium",
+//     timeStyle: "short",
+//   });
 
 
 
