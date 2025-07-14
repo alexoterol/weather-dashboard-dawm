@@ -1,5 +1,6 @@
 // import { useState } from 'react';
-import { Grid } from '@mui/material';
+import './App.css';
+import { Grid, Typography } from '@mui/material';
 import HeaderUI from './components/HeaderUI';
 import SelectorUI from './components/SelectorUI';
 import AlertUI from './components/AlertUI';
@@ -96,30 +97,14 @@ function App() {
         )}
 
 
-        {/* Resumen */}
+        {/* Footer */}
         <Grid size={{ xs: 12, md: 12 }}> 
-
+          <footer className="mt-8 mb-4 text-center text-sm text-gray-600 dark:text-gray-300">
+            <Typography component="p">
+              © {new Date().getFullYear()} Dashboard del Clima. Todos los derechos reservados.
+            </Typography>
+          </footer>
         </Grid>
-
-
-        {/* Información A Considerar */}
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Grid>h2 Indice de confort</Grid>
-          <Grid>Recomendaciones</Grid>
-          <Grid>Info del sistema</Grid>
-        </Grid>
-
-        {/* Gráfico */}
-        <Grid size={{ xs: 12, md: 6 }}>Elemento: Gráfico</Grid>
-        
-        {/* Pronóstico 7 días */}
-        <Grid size={{ xs: 12, md: 6 }}>Elemento: Gráfico</Grid>
-
-        {/* Tabla de info detallada */}
-        <Grid>Elemento: Tabla</Grid>
-
-        
-
       </Grid>
     </>
   )

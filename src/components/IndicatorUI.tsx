@@ -1,7 +1,3 @@
-
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 import React from "react";
 
 interface IndicatorUIProps {
@@ -11,55 +7,31 @@ interface IndicatorUIProps {
   color?: string; // HEX o nombre
 }
 
-export default function IndicatorUI({ title, description, icon, color }: IndicatorUIProps) {
+export default function IndicatorUI({
+  title,
+  description,
+  icon,
+  color = "#3b82f6", // color por defecto (azul Tailwind)
+}: IndicatorUIProps) {
   return (
-    <Card
-      elevation={2}
-      sx={{
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        px: 2,
-        py: 1.5,
-        borderRadius: 3,
-      }}
-    >
-      <CardContent
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: 2,
-          padding: 0,
-          width: "100%",
-        }}
-      >
-        {icon && (
-          <div
-            style={{
-              padding: "0.5rem",
-              borderRadius: "9999px",
-              backgroundColor: `${color || "#e0e0e0"}22`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "1.5rem",
-              lineHeight: 1,
-              minWidth: "2.5rem",
-              minHeight: "2.5rem",
-            }}
-          >
-            <span style={{ color: color || "#1976d2" }}>{icon}</span>
-          </div>
-        )}
-        <div style={{ flex: 1 }}>
-          <Typography variant="body2" color="text.secondary">
-            {title}
-          </Typography>
-          <Typography variant="h6" fontWeight="bold" color="text.primary">
-            {description}
-          </Typography>
+    <div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-600 transition-all duration-300 rounded-xl p-4 flex items-center gap-4 shadow-sm">
+      {/* Icono */}
+      {icon && (
+        <div
+          className="rounded-full p-2 bg-opacity-20"
+          style={{ backgroundColor: `${color}22` }}
+        >
+          <span style={{ color }} className="text-xl">
+            {icon}
+          </span>
         </div>
-      </CardContent>
-    </Card>
+      )}
+
+      {/* Texto */}
+      <div className="flex-1">
+        <p className="text-sm text-gray-900 dark:text-gray-300">{title}</p>
+        <p className="text-lg font-bold text-gray-900 dark:text-white">{description}</p>
+      </div>
+    </div>
   );
 }

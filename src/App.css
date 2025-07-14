@@ -1,22 +1,10 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 2rem
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+
 
 @keyframes logo-spin {
   from {
@@ -33,10 +21,17 @@
   }
 }
 
-.card {
-  padding: 2em;
+
+
+body {
+  background-color: #ffffff;
+  color: #1f2937; /* gris oscuro para texto */
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.read-the-docs {
-  color: #888;
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #111820; /* gris muy oscuro */
+    color: #f3f4f6; /* gris muy claro para texto */
+  }
 }

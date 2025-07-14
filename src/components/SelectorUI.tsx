@@ -68,7 +68,7 @@ const SelectorUI = ({ onLocationSelected }: SelectorUIProps) => {
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-8 max-w-xl w-full animate-fade-in transition-colors">
       <div className="space-y-4">
         <div className="flex items-center space-x-2">
-          <MapPin className="h-5 w-5 text-weather-blue dark:text-weather-saffron" />
+          <MapPin className="h-5 w-5 text-black dark:text-white" />
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Seleccionar Ubicación</h3>
         </div>
         
