@@ -31,7 +31,7 @@ Datos actuales del clima:
 - weatherInfo: ${JSON.stringify(weatherInfo)}
 
 Basado en estos datos, responde de forma amigable y clara.
-      `;
+`;
 
       const reply = await getCohereWeatherResponse(fullPrompt);
       setResponse(reply);
@@ -43,7 +43,7 @@ Basado en estos datos, responde de forma amigable y clara.
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 px-6 ">
+    <div className="max-w-3xl min-w-2xl mx-auto mt-10 px-6 ">
       <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-md transition-all duration-300">
         <div className="flex items-center gap-3 mb-4">
           <div className="rounded-full p-2 bg-blue-100 dark:bg-blue-900">

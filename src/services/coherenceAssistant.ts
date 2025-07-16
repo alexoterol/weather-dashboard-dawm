@@ -1,7 +1,7 @@
 // src/api/cohereAssistant.ts
 
 let apiCallCount = 0;
-const MAX_CALLS_PER_MINUTE = 30;
+const MAX_CALLS_PER_MINUTE = 15;
 let lastCallTimestamp = Date.now();
 
 export async function getCohereWeatherResponse(userQuery: string): Promise<string> {

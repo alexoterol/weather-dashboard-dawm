@@ -46,8 +46,8 @@ export default function Main({ weatherData, weatherInfo }: MainProps) {
         <Grid size={{ xs: 12, md: 4 }}>
           <SummaryExtra weather={weatherData} />
         </Grid>
-
-      <section>
+ 
+      <section className="max-w-7xl mx-auto mt-8 flex flex-wrap gap-6 items-start">
         <Grid size={{ xs: 12, md:12 }}>
           <WeatherAssistant weatherData={weatherData} weatherInfo={weatherInfo} />
         </Grid>
