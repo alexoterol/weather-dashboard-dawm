@@ -2,6 +2,7 @@ import CurrentWeatherSummary from "./CurrentWeatherUI";
 import IndicatorPanelUI from "./IndicatorPanelUI";
 import ChartUI from "./ChartUI";
 import TableUI from "./TableUI";
+import WeatherAssistant from "./WeatherAssistant";
 import type { WeatherData, WeatherCodeInfo, LocationData } from "../types/weather";
 import { Grid } from '@mui/material';
 import SummaryExtra from "./SumaryExtra";
@@ -46,6 +47,12 @@ export default function Main({ weatherData, weatherInfo }: MainProps) {
           <SummaryExtra weather={weatherData} />
         </Grid>
 
+      <section>
+        <Grid size={{ xs: 12, md:12 }}>
+          <WeatherAssistant weatherData={weatherData} weatherInfo={weatherInfo} />
+        </Grid>
+      </section>
+      
       </section>
       <section className="max-w-7xl mx-auto mt-8 flex flex-wrap gap-6 items-start">
         <Grid size={{ xs: 12, md: 4 }}>
@@ -64,6 +71,7 @@ export default function Main({ weatherData, weatherInfo }: MainProps) {
           <DetailSummary weatherData={weatherData} />
         </Grid>
       </section>
+
     </main>
   );
 }

@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/weather-dashboard-dawm/dev-sw.js?dev-sw', { scope: '/weather-dashboard-dawm/', type: 'classic' })

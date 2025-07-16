@@ -9,7 +9,8 @@ import { weatherApi } from './services/weatherApi';
 import MainUI from './components/MainUI';
 import { useState } from 'react';
 import type { LocationData, WeatherCodeInfo, WeatherData } from './types/weather';
-// import type { LocationData } from './types/weather';
+import { getCohereWeatherResponse } from "./services/coherenceAssistant";
+
 
 
 function App() {
